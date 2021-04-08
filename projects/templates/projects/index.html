@@ -1,6 +1,28 @@
 {% extends 'projects/base.html' %}
 {% load bootstrap4 %}
+{% load static %}
 
 {% block content %}
-<h1>In Progress</h1>
-{%endblock%}
+{{block.super}}
+
+<div class="container">
+    {% if projects %}
+    {% for project in projects %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{project.photo.url}}" class="card-img-top" alt="{{project.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{project.title}}</h5>
+                    <p class="card-text">{{project.description}}</p>
+                    <a href="#" class="btn btn-primary">Live link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

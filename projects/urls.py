@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
     url('^$',views.index,name = 'index'),
+    url('^post/',views.post, name='post'),
 ]
 
 if settings.DEBUG:

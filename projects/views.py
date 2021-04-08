@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -24,7 +25,7 @@ def post(request):
             projects = form.save(commit=False)
             post.user = request.user
             projects.save()
-            return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/')
     else:
         form = ProjectForm()  
 

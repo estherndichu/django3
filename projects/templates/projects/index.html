@@ -7,18 +7,16 @@
 
 <div class="container">
     <div class="row">
-        {% for project in projects %}
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
+        <div class="col-md-4">
+            {% for project in projects %}
                 <img src="{{project.photo.url}}" class="card-img-top" alt="{{project.title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{project.title}}</h5>
                     <p class="card-text">{{project.description}}</p>
-                    <a href="#" class="btn btn-primary">Live link</a>
+                    <a href="{{project.project}}" class="btn btn-primary">Live link</a>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 

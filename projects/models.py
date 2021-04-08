@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-import cloudinary
 from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 # Create your models here.
@@ -8,7 +7,7 @@ from django.db.models.signals import post_save
 class Project(models.Model):
     project = models.URLField(max_length=120, default='website-url')
     description = models.TextField()
-    photo = CloudinaryField(default='landing-page')
+    photo = CloudinaryField('image')
     title = models.CharField(max_length=200)
 
     def save_project(self):

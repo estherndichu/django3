@@ -6,7 +6,7 @@ from .models import Project, Profile
 from .forms import ProjectForm
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer,ProfileSerializer
 
 # Create your views here.
 @login_required
@@ -34,3 +34,8 @@ class ProjectList(APIView):
         serializers = ProjectSerializer(all_projects,many=True)
         return Response(serializers.data)     
     
+class ProfileList(APIView):
+    def get(self,request, format=None):
+        all_profiles= Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)

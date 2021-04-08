@@ -29,6 +29,8 @@ def post(request):
     return render(request,'projects/post.html', {'form':form})   
 
 class ProjectList(APIView):
-    all_projects = Project.objects.all()
-    serializers = ProjectSerializer(all_projects,many=True)
-    return Response(serializers.data)     
+    def get(self, request, form=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects,many=True)
+        return Response(serializers.data)     
+    

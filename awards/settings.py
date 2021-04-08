@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'static',
     'cloudinary',
     'crispy_forms',
+    'rest_framework',
 ]
 
 cloudinary.config( 

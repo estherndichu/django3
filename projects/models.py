@@ -6,9 +6,9 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 class Project(models.Model):
-    project = models.URLField()
+    project = models.URLField(max_length=120, default='website-url')
     description = models.TextField()
-    photo = CloudinaryField('photo')
+    photo = CloudinaryField(default='landing-page')
     title = models.CharField(max_length=200)
 
     def save_project(self):
@@ -29,3 +29,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user
+
+    def save_profile(self):
+        self.save()  
+
+    def delete_profile(self):
+        self.delete()
+
+    def update_bio(self, bio):
+        self.bio = bio
+        self.save()
+    

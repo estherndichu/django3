@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .models import Project, Profile
-from .forms import ProjectForm
+from .forms import ProjectForm,ProfileForm
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProjectSerializer,ProfileSerializer
@@ -29,7 +29,14 @@ def post(request):
         form = ProjectForm()  
 
     form = ProjectForm()
-    return render(request,'projects/post.html', {'form':form})   
+    return render(request,'projects/post.html', {'form':form}) 
+
+def profile(request, id):
+    user =User.objects.get(id=id)
+    profile = Profile.objects.get(user_id=id)
+    projects = Project.objects.filter(profile_id=id)[::-1]
+
+    return render(request, 'projects/profile.html',{'user':user, 'profile':profile, 'projects':projects})      
 
 class ProjectList(APIView):
     def get(self, request, form=None):

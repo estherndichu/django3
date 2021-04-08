@@ -25,7 +25,7 @@ cd profile-django pip install -r requirements.txt
  ##### Setup Database  
   SetUp your database User,Password, Host then make migrate  
  ```bash 
-python manage.py makemigrations gallery
+python manage.py makemigrations
  ``` 
  Now Migrate  
  ```bash 
@@ -46,9 +46,8 @@ python manage.py makemigrations gallery
 Open the application on your browser `127.0.0.1:8000`.  
 
 ## BDD/User Stories
-* User can sign upor sign in to the application
+* User can sign up or sign in to the application
 * User can post their projects and also view projects from other users.
-* User can click on an image of the project to view its details.
 * User can access other users' live projects via live links provided.
 ## Technologies Used
 This application has been built using 

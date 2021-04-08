@@ -6,10 +6,8 @@
 {{block.super}}
 
 <div class="container">
-    {% if projects %}
-    {% for project in projects %}
-
     <div class="row">
+        {% for project in projects %}
         <div class="col-md-3">
             <div class="card" style="width: 18rem;">
                 <img src="{{project.photo.url}}" class="card-img-top" alt="{{project.title}}">
@@ -20,9 +18,8 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    {% endif %}
 </div>
 
 {% endblock %}

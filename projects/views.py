@@ -16,16 +16,19 @@ def index(request):
     return render(request,'projects/index.html', {'projects':projects})
 
 def post(request):  
+    current_user = request.user
+
     if request.method == 'POST':
-        form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             projects = form.save(commit=False)
             post.user = request.user
             projects.save()
-            return HttpResponseRedirect(request.path_info)
+            return HttpResponseRedirect('/')
     else:
         form = ProjectForm()  
 
+    form = ProjectForm()
     return render(request,'projects/post.html', {'form':form})   
 
 class ProjectList(APIView):

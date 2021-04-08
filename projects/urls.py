@@ -6,6 +6,7 @@ from . import views
 urlpatterns=[
     url('^$',views.index,name = 'index'),
     url('^post/',views.post, name='post'),
+    url('^api/project/$', views.ProjectList.as_view())
 ]
 
 if settings.DEBUG:

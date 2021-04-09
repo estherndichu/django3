@@ -1,0 +1,29 @@
+{%extends 'projects/base.html'%} 
+{% block content %} 
+{{block.super}}
+
+  <div class="card mb-3" style="max-width: 100%;">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{profile.photo.url}}" class="card-img" alt="profile-img">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{request.user}}'s Profile</h5>
+        <p class="card-text-text-muted">Bio :{{user_profile.bio}}</p>
+        <p class="card-text">Email :{{user_profile.contact}}</p>
+        <p class="card-text">Username :{{request.user}}</p>
+        <small class="text-muted">Sites Uploaded</small></p>
+        <ul class="container details">
+                        
+            {% for project in projects %}
+            <p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{project.title}}</p>
+        
+            {%endfor%} 
+        </ul>        
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

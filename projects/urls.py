@@ -8,6 +8,8 @@ urlpatterns=[
     url('^post/',views.post, name='post'),
     url('^api/project/$', views.ProjectList.as_view()),
     url('^api/profile/$', views.ProfileList.as_view()),
+    url("^profile/", views.profile, name="profile"),
+    url('^update_profile/$',views.update_profile,name = 'update_profile'),
 ]
 
 if settings.DEBUG:

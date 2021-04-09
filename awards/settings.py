@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projects',
+    'static',
+    'crispy_forms',
     'bootstrap4',
     'cloudinary',
     'rest_framework',
@@ -90,16 +92,14 @@ WSGI_APPLICATION = 'awards.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': os.environ.get('DB_NAME'),
-           'USER': os.environ.get('DB_USER'),
-           'PASSWORD': os.environ.get('DB_PASSWORD'),
-           'HOST': os.environ.get('DB_HOST'),
-           'PORT': '5432',
-       }
-       
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'awardz',
+        'USER': 'esther',
+    'PASSWORD':'brielle',
+    }
+}
+
 
 
 # Password validation
@@ -145,8 +145,13 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+django_heroku.settings(locals())

@@ -10,6 +10,7 @@ urlpatterns=[
     url('^api/profile/$', views.ProfileList.as_view()),
     url("^profile/", views.profile, name="profile"),
     url('^update_profile/$',views.update_profile,name = 'update_profile'),
+    url('^project/(\d+)', views.project, name='project'),
 ]
 
 if settings.DEBUG:

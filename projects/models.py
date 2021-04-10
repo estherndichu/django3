@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = CloudinaryField('picture')
+    picture = models.ImageField(upload_to='profiles/')
     bio = models.CharField(max_length=256)
     contact = models.EmailField()
                                             
@@ -22,7 +22,7 @@ post_save.connect(create_profile, sender = User)
 class Project(models.Model):
     project = models.URLField(max_length=120, default='website-url')
     description = models.TextField()
-    photo = CloudinaryField('photo')
+    photo = models.ImageField(upload_to='projects/')
     title = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
         
